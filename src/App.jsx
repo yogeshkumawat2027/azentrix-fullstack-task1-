@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     initializeData();
 
-    console.log(getTransactions());
+    
   }, []);
 
   return (
