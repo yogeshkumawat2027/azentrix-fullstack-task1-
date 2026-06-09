@@ -4,28 +4,39 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 // import './App.css'
 
-import TransactionTable from './components/TransactionTable'
-
 import {
-  initializeData,
-} from "./data/budgetStorage";
+  getTransactions,
+} from "./services/transactionService";
 
-
-import { getTransactions } from './services/transactionService';
-
+import TransactionForm from "./components/TransactionForm";
+// import TransactionTable from "./components/TransactionTable";
+// import SummaryCards from "./components/SummaryCards";
+// import ExpenseChart from "./components/ExpenseChart";
 
 function App() {
+  const [transactions, setTransactions] = useState([]);
 
-  const transactions = getTransactions();
   useEffect(() => {
-    initializeData();
-
-    console.log(getTransactions());
+    setTransactions(getTransactions());
   }, []);
 
   return (
     <div>
-     <TransactionTable></TransactionTable>
+     
+
+      {/* <SummaryCards transactions={transactions} /> */}
+
+      <TransactionForm
+        transactions={transactions}
+        setTransactions={setTransactions}
+      />
+{/* 
+      <TransactionTable
+        transactions={transactions}
+        setTransactions={setTransactions}
+      />
+
+      <ExpenseChart transactions={transactions} /> */}
     </div>
   );
 }
