@@ -21,23 +21,10 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div> Budget Tracker </div>
      
 
-      {/* <SummaryCards transactions={transactions} /> */}
-
-      <TransactionForm
-        transactions={transactions}
-        setTransactions={setTransactions}
-      />
-{/* 
-      <TransactionTable
-        transactions={transactions}
-        setTransactions={setTransactions}
-      />
-
-      <ExpenseChart transactions={transactions} /> */}
-    </div>
+     
   );
 }
 
