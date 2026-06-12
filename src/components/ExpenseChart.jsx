@@ -4,7 +4,7 @@ import { getTransactions } from "../services/transactionService";
 
     return(
         <>
-        <h1>Header</h1>
+        <h1>ExpanseChart</h1>
         </>
     )
  }
