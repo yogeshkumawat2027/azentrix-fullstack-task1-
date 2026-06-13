@@ -9,16 +9,10 @@ import {
 } from "./services/transactionService";
 
 import TransactionForm from "./components/TransactionForm";
-// import TransactionTable from "./components/TransactionTable";
-// import SummaryCards from "./components/SummaryCards";
-// import ExpenseChart from "./components/ExpenseChart";
+
 
 function App() {
-  const [transactions, setTransactions] = useState([]);
-
-  useEffect(() => {
-    setTransactions(getTransactions());
-  }, []);
+  
 
   return (
     <div> Budget Tracker </div>
