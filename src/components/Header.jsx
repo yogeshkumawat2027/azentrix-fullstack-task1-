@@ -1,18 +1,19 @@
 import "./Header.css";
 
-function Header({ transactions }) {
-  const income = transactions
+function Header({ transactions }){
+
+   const income = transactions
     .filter((transaction) => transaction.type === "income")
-    .reduce((sum, transaction) => sum + Number(transaction.amount), 0);
+    .reduce((sum, transaction)=> sum + Number(transaction.amount), 0);
 
   const expenses = transactions
-    .filter((transaction) => transaction.type === "expense")
-    .reduce((sum, transaction) => sum + Number(transaction.amount), 0);
+    .filter((transaction)=> transaction.type === "expense")
+    .reduce((sum, transaction)=> sum + Number(transaction.amount), 0);
 
   const netBalance = income - expenses;
   const currDate = new Date();
 
-  const monthYear = currDate.toLocaleDateString("en-IN", {
+   const monthYear = currDate.toLocaleDateString("en-IN", {
     month: "long",
     year: "numeric",
   });

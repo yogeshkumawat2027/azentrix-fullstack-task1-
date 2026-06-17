@@ -20,6 +20,7 @@ function App() {
 
   return (
     <div className="app-shell">
+
       <Header transactions={transactions} />
 
       <main className="dashboard-main">
@@ -37,29 +38,17 @@ function App() {
         </section>
 
         <ExpenseChart transactions={transactions} />
+
       </main>
 
       {isAddModalOpen && (
-        <div
-          className="add-modal-overlay"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Add transaction"
-        >
+        <div className="add-modal-overlay" role="dialog" aria-modal="true" aria-label="Add transaction" >
+                
           <div className="add-modal">
-            <button
-              className="add-modal-close"
-              type="button"
-              aria-label="Close add transaction form"
-              onClick={() => setIsAddModalOpen(false)}
-            >
-              x
-            </button>
-
-            <TransactionForm
-              setTransactions={setTransactions}
-              onTransactionAdded={() => setIsAddModalOpen(false)}
-            />
+            <button  className="add-modal-close" type="button" aria-label="Close add transaction form" onClick={() => setIsAddModalOpen(false)}> x </button>
+              
+            <TransactionForm  setTransactions={setTransactions}  onTransactionAdded={() => setIsAddModalOpen(false)}  />
+                    
           </div>
         </div>
       )}
