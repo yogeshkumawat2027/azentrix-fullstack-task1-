@@ -30,11 +30,11 @@
   display: grid;
   place-items: center;
   color: #ffffff;
-  background: linear-gradient(135deg, #2563eb, #14b8a6);
+  background: var(--blue-dark);
   border-radius: 16px;
   font-size: 1rem;
   font-weight: 800;
-  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.24);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.34);
 }
 
 .header-text h1 {

@@ -41,17 +41,23 @@ function Header({ transactions }){
           </div>
         </div>
 
+
+
         <div className="header-meta">
           <span className="header-date">Last Updated {updatedDate}</span>
           <span className="month-section">{monthYear}</span>
         </div>
       </div>
 
+
+
+
       <div className="stats-container">
         <div className="stat-card">
           <span>Income</span>
           <h3>{"\u20B9"}{income.toLocaleString("en-IN")}</h3>
         </div>
+
 
         <div className="stat-card">
           <span>Expenses</span>
@@ -63,6 +69,7 @@ function Header({ transactions }){
           <h3>{"\u20B9"}{netBalance.toLocaleString("en-IN")}</h3>
         </div>
 
+
         <div className="stat-card">
           <span>Transactions</span>
           <h3>{transactions.length}</h3>
@@ -72,4 +79,4 @@ function Header({ transactions }){
   );
 }
 
-export default Header;
+   export default Header;

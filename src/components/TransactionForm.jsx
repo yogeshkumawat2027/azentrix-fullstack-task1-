@@ -65,7 +65,7 @@ function TransactionForm({ setTransactions, onTransactionAdded }) {
     onTransactionAdded?.();
   };
 
-  return (
+  return(
     <div className="transaction-form-container">
       <h2>Add Transaction</h2>
 

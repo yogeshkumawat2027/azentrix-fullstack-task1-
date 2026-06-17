@@ -1,27 +1,27 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  color: #172033;
-  background: #f4f7fb;
+  color: #eef5ff;
+  background: #060912;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --app-bg: #f4f7fb;
-  --card-bg: rgba(255, 255, 255, 0.92);
-  --card-strong: #ffffff;
-  --text-main: #172033;
-  --text-muted: #64748b;
-  --border-soft: #dbe3ef;
-  --blue: #2563eb;
-  --blue-dark: #1d4ed8;
-  --blue-soft: #eaf1ff;
-  --green: #16a34a;
-  --red: #dc2626;
-  --shadow-card: 0 18px 45px rgba(29, 78, 216, 0.08);
-  --shadow-hover: 0 20px 48px rgba(15, 23, 42, 0.12);
+  --app-bg: #060912;
+  --card-bg: rgba(13, 19, 32, 0.94);
+  --card-strong: #101827;
+  --text-main: #eef5ff;
+  --text-muted: #8ea2bd;
+  --border-soft: #223047;
+  --blue: #60a5fa;
+  --blue-dark: #3b82f6;
+  --blue-soft: rgba(59, 130, 246, 0.13);
+  --green: #4ade80;
+  --red: #fb7185;
+  --shadow-card: 0 22px 54px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 24px 58px rgba(0, 0, 0, 0.52);
 }
 
 * {
@@ -31,9 +31,7 @@
 body {
   min-width: 320px;
   margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 32rem),
-    linear-gradient(180deg, #f8fbff 0%, var(--app-bg) 100%);
+  background: var(--app-bg);
 }
 
 button,
@@ -47,30 +45,28 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid rgba(37, 99, 235, 0.25);
+  outline: 3px solid rgba(96, 165, 250, 0.28);
   outline-offset: 2px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --app-bg: #101724;
-    --card-bg: rgba(18, 26, 40, 0.94);
-    --card-strong: #162033;
+    --app-bg: #050814;
+    --card-bg: rgba(10, 15, 27, 0.96);
+    --card-strong: #0d1423;
     --text-main: #edf4ff;
-    --text-muted: #9fb0c7;
-    --border-soft: #26364c;
+    --text-muted: #91a6c2;
+    --border-soft: #1c2a40;
     --blue: #60a5fa;
     --blue-dark: #3b82f6;
-    --blue-soft: rgba(96, 165, 250, 0.14);
+    --blue-soft: rgba(96, 165, 250, 0.13);
     --green: #4ade80;
     --red: #fb7185;
-    --shadow-card: 0 18px 45px rgba(0, 0, 0, 0.24);
-    --shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.32);
+    --shadow-card: 0 22px 58px rgba(0, 0, 0, 0.48);
+    --shadow-hover: 0 24px 62px rgba(0, 0, 0, 0.58);
   }
 
   body {
-    background:
-      radial-gradient(circle at top left, rgba(96, 165, 250, 0.16), transparent 30rem),
-      linear-gradient(180deg, #0d1320 0%, var(--app-bg) 100%);
+    background: var(--app-bg);
   }
 }

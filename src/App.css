@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: center;
   padding: 18px;
-  background: rgba(15, 23, 42, 0.58);
+  background: rgba(2, 6, 23, 0.76);
   backdrop-filter: blur(8px);
 }
 
@@ -44,19 +44,21 @@
   z-index: 2;
   width: 34px;
   height: 34px;
-  border: 0;
+  border: 1px solid var(--border-soft);
   border-radius: 50%;
-  background: #eef2ff;
-  color: #0f172a;
+  background: var(--card-strong);
+  color: var(--text-main);
   font-size: 1rem;
+  line-height: 1;
   font-weight: 800;
   cursor: pointer;
-  transition: background 180ms ease, transform 180ms ease;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 
 .add-modal-close:hover {
-  background: #dbeafe;
-  transform: rotate(90deg);
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+  color: #ffffff;
 }
 
 @media (max-width: 1024px) {

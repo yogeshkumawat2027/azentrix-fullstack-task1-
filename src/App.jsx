@@ -42,10 +42,21 @@ function App() {
       </main>
 
       {isAddModalOpen && (
-        <div className="add-modal-overlay" role="dialog" aria-modal="true" aria-label="Add transaction" >
-                
+        <div
+          className="add-modal-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Add transaction"
+        >
           <div className="add-modal">
-            <button  className="add-modal-close" type="button" aria-label="Close add transaction form" onClick={() => setIsAddModalOpen(false)}> x </button>
+            <button
+              className="add-modal-close"
+              type="button"
+              aria-label="Close add transaction form"
+              onClick={() => setIsAddModalOpen(false)}
+            >
+              X
+            </button>
               
             <TransactionForm  setTransactions={setTransactions}  onTransactionAdded={() => setIsAddModalOpen(false)}  />
                     

@@ -75,24 +75,12 @@
 .mobile-add-btn {
   display: none;
   align-items: center;
-  gap: 6px;
   min-height: 34px;
   padding: 7px 12px;
   color: #ffffff;
   background: var(--blue-dark);
   font-size: 0.84rem;
   font-weight: 800;
-}
-
-.mobile-add-btn svg,
-.icon-btn svg {
-  width: 17px;
-  height: 17px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2;
 }
 
 .empty-state {
@@ -248,14 +236,29 @@
 }
 
 .icon-btn {
-  width: 36px;
+  min-width: 58px;
   height: 36px;
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
   border: 0;
   border-radius: 11px;
+  font-size: 0.78rem;
+  font-weight: 800;
   cursor: pointer;
   transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.action-icon {
+  display: none;
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
 }
 
 .icon-btn:hover {
@@ -346,8 +349,24 @@
 
   .icon-btn {
     width: 32px;
+    min-width: 32px;
     height: 32px;
+    padding: 0;
     border-radius: 10px;
+    font-size: 0.72rem;
+  }
+
+  .action-icon {
+    display: block;
+  }
+
+  .action-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 
   .card-actions {

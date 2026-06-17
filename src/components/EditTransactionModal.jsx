@@ -48,7 +48,7 @@ function EditTransactionForm({
           aria-label="Close edit transaction modal"
           onClick={() => setSelectedTransaction(null)}
         >
-          x
+          X
         </button>
       </div>
 

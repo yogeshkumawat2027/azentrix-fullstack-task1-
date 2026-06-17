@@ -100,7 +100,7 @@
 .progress-fill {
   height: 100%;
   min-width: 5px;
-  background: linear-gradient(90deg, var(--blue-dark), #38bdf8);
+  background: var(--blue-dark);
   border-radius: inherit;
   transition: width 300ms ease;
 }
