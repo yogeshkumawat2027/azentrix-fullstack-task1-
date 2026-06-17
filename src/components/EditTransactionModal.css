@@ -1,0 +1,86 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+.modal-container {
+  width: 100%;
+  max-width: 500px;
+
+  background: white;
+
+  border-radius: 16px;
+
+  padding: 24px;
+
+  margin: 20px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  color: #111827;
+}
+
+.close-btn {
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 18px;
+}
+
+.modal-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-container input,
+.modal-container select,
+.modal-container textarea {
+  padding: 12px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+
+  font-size: 14px;
+}
+
+.save-btn {
+  border: none;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: white;
+
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #1d4ed8;
+}
