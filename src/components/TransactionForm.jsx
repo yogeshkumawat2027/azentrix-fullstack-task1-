@@ -1,107 +1,130 @@
-import { getTransactions , addTransaction } from "../services/transactionService";
-
 import { useState } from "react";
+import { toast } from "react-toastify";
 
-import "./TransactionForm.css"
+import { addTransaction, getTransactions } from "../services/transactionService";
+import "./TransactionForm.css";
 
- function TransactionForm({ setTransactions }){
+const expenseCategories = [
+  "Food",
+  "Travel",
+  "Shopping",
+  "Bills",
+  "Healthcare",
+  "Education",
+  "Other",
+];
 
-    const expenseCategories = [ "Food" , "Travel" , "Shopping" , "Bills" , "HealthCare" , "Education " , "other"];
-    const incomeSources = [ "salary" , "business" , "freelancing" , "other"];
+const incomeCategories = ["Salary", "Business", "Freelancing", "Investment", "Other"];
 
-    const [formData , setFormData] = useState({
-        type : "expense",
-        amount : "",
-        catagories : "Food",
-        description : ""
+const getToday = () => new Date().toISOString().slice(0, 10);
+
+function TransactionForm({ setTransactions, onTransactionAdded }) {
+  const [formData, setFormData] = useState({
+    type: "expense",
+    amount: "",
+    category: expenseCategories[0],
+    description: "",
+    date: getToday(),
+  });
+
+  const options = formData.type === "expense" ? expenseCategories : incomeCategories;
+
+  const handleTypeChange = (type) => {
+    setFormData((currentData) => ({
+      ...currentData,
+      type,
+      category: type === "expense" ? expenseCategories[0] : incomeCategories[0],
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!formData.amount || Number(formData.amount) <= 0) {
+      toast.error("Please enter a valid amount");
+      return;
+    }
+
+    addTransaction({
+      ...formData,
+      amount: Number(formData.amount),
+      date: new Date(`${formData.date}T12:00:00`).toISOString(),
     });
 
-    const handleTypeChange = (e)=>{
-        const type = e.target.value;
+    setTransactions(getTransactions());
+    toast.success("Transaction added successfully");
 
-        setFormData({
-            ...formData , type , catogary:
-                                   type === "expense" ? expenseCategories[0] : incomeSources[0],
+    setFormData({
+      type: "expense",
+      amount: "",
+      category: expenseCategories[0],
+      description: "",
+      date: getToday(),
+    });
 
-        })
-    };
+    onTransactionAdded?.();
+  };
 
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-
-        if(!formData.amount) return;
-
-        addTransaction({
-            ...formData,
-            amount: Number(formData.amount), 
-            date : new Date().toISOString()
-        });
-
-        setTransactions(getTransactions);
-
-        setFormData({
-            type : "expense",
-            amount : "",
-            catogary
-        })
-
-    }
-     const options = formData.type === "expense" ? expenseCategories  : incomeSources;
-     
-      
-
-   
-   return (
+  return (
     <div className="transaction-form-container">
       <h2>Add Transaction</h2>
 
-      <form className="transaction-form" onSubmit={handleSubmit} >
-        
-        <div className="form-group">
-          <label>Transaction Type</label>
+      <form className="transaction-form" onSubmit={handleSubmit}>
+        <div className="type-toggle" aria-label="Transaction type">
+          <button
+            className={formData.type === "income" ? "active" : ""}
+            type="button"
+            onClick={() => handleTypeChange("income")}
+          >
+            Income
+          </button>
 
-          <select value={formData.type} onChange={handleTypeChange} >
-            
-            <option value="expense">Expense</option>
-            <option value="income">Income</option>
-
-          </select>
+          <button
+            className={formData.type === "expense" ? "active" : ""}
+            type="button"
+            onClick={() => handleTypeChange("expense")}
+          >
+            Expense
+          </button>
         </div>
 
         <div className="form-group">
-            
-          <label>Amount (₹)</label>
-
-          <input
-            type="number"
-            placeholder="Enter amount"
-            value={formData.amount}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                amount: e.target.value,
-              })
-            }
-          />
+          <label htmlFor="transaction-amount">Amount</label>
+          <div className="amount-input">
+            <span aria-hidden="true">₹</span>
+            <input
+              id="transaction-amount"
+              type="number"
+              min="1"
+              placeholder="0.00"
+              value={formData.amount}
+              onChange={(event) =>
+                setFormData({
+                  ...formData,
+                  amount: event.target.value,
+                })
+              }
+            />
+          </div>
         </div>
 
         <div className="form-group">
-          <label>{formData.type === "expense" ? "Category": "Income Source"} </label>
-            
+          <label htmlFor="transaction-category">
+            {formData.type === "expense" ? "Category" : "Income Source"}
+          </label>
+
           <select
+            id="transaction-category"
             value={formData.category}
-            onChange={(e) =>
+            onChange={(event) =>
               setFormData({
                 ...formData,
-                category: e.target.value,
+                category: event.target.value,
               })
             }
           >
             {options.map((item) => (
-              <option
-                key={item}
-                value={item}
-              >
+              <option key={item} value={item}>
                 {item}
               </option>
             ))}
@@ -109,26 +132,45 @@ import "./TransactionForm.css"
         </div>
 
         <div className="form-group">
-          <label>Description</label>
-
+          <label htmlFor="transaction-description">Description</label>
           <textarea
+            id="transaction-description"
             rows="3"
-            placeholder="Optional description..."
+            placeholder="Optional description"
             value={formData.description}
-            onChange={(e) =>
+            onChange={(event) =>
               setFormData({
                 ...formData,
-                description: e.target.value,
+                description: event.target.value,
               })
             }
           />
         </div>
 
-        <button type="submit" className="submit-btn">Add Transaction</button>
-                
+        <div className="form-group">
+          <label htmlFor="transaction-date">Date</label>
+          <div className="date-input">
+            <input
+              id="transaction-date"
+              type="date"
+              value={formData.date}
+              onChange={(event) =>
+                setFormData({
+                  ...formData,
+                  date: event.target.value,
+                })
+              }
+            />
+            <span aria-hidden="true">□</span>
+          </div>
+        </div>
+
+        <button type="submit" className="submit-btn">
+          Add Transaction
+        </button>
       </form>
     </div>
   );
 }
 
- export default TransactionForm;
+export default TransactionForm;

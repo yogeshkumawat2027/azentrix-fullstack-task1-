@@ -1,21 +1,21 @@
 import "./Header.css";
 
 function Header({ transactions }) {
+  const income = transactions
+    .filter((transaction) => transaction.type === "income")
+    .reduce((sum, transaction) => sum + Number(transaction.amount), 0);
 
+  const expenses = transactions
+    .filter((transaction) => transaction.type === "expense")
+    .reduce((sum, transaction) => sum + Number(transaction.amount), 0);
 
-    const income = transactions.filter((t)=> t.type === "income")
-                 .reduce((sum , t)=> sum + Number(t.amount) , 0);
+  const netBalance = income - expenses;
+  const currDate = new Date();
 
-    const expenses = transactions
-        .filter((t)=> t.type === "expense")
-        .reduce((sum , t) => sum + Number(t.amount),0);
-    
-
-    const netBalance = income - expenses;
-
-    const currDate = new Date();
-
-    const monthYear = currDate.toLocaleDateString("en-IN" , { month  : "long" , year : "numeric"});
+  const monthYear = currDate.toLocaleDateString("en-IN", {
+    month: "long",
+    year: "numeric",
+  });
 
   const updatedDate = currDate.toLocaleDateString("en-IN", {
     weekday: "short",
@@ -24,44 +24,42 @@ function Header({ transactions }) {
     year: "numeric",
   });
 
-
-   
-    return (
+  return (
     <header className="dashboard-header">
       <div className="header-content">
         <div className="brand-section">
-          <div className="logo">BT</div>
+          <div className="logo" aria-label="Logo placeholder">
+            PF
+          </div>
 
           <div className="header-text">
             <h1>Personal Finance Dashboard</h1>
-
-            <p>
-              Clean overview of your monthly cash flow and
-              transaction activity.
+            <p className="header-subtitle">
+              Clean overview of your monthly cash flow and transaction activity.
             </p>
-            <span className="header-date">Updated {updatedDate}</span>
           </div>
         </div>
 
-        <div className="month-section">
-          <h2>{monthYear}</h2>
+        <div className="header-meta">
+          <span className="header-date">Last Updated {updatedDate}</span>
+          <span className="month-section">{monthYear}</span>
         </div>
       </div>
 
       <div className="stats-container">
         <div className="stat-card">
           <span>Income</span>
-          <h3>₹{income.toLocaleString("en-IN")}</h3>
+          <h3>{"\u20B9"}{income.toLocaleString("en-IN")}</h3>
         </div>
 
         <div className="stat-card">
           <span>Expenses</span>
-          <h3>₹{expenses.toLocaleString("en-IN")}</h3>
+          <h3>{"\u20B9"}{expenses.toLocaleString("en-IN")}</h3>
         </div>
 
         <div className="stat-card">
           <span>Net Balance</span>
-          <h3>₹{netBalance.toLocaleString("en-IN")}</h3>
+          <h3>{"\u20B9"}{netBalance.toLocaleString("en-IN")}</h3>
         </div>
 
         <div className="stat-card">
