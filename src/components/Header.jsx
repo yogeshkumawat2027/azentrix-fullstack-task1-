@@ -30,7 +30,7 @@ function Header({ transactions }){
       <div className="header-content">
         <div className="brand-section">
           <div className="logo" aria-label="Logo placeholder">
-            PF
+            
           </div>
 
           <div className="header-text">

@@ -30,11 +30,12 @@
   display: grid;
   place-items: center;
   color: #ffffff;
-  background: var(--blue-dark);
+  background-image: url("/src/assets/logo.png");
+  background-size: cover;
   border-radius: 16px;
   font-size: 1rem;
   font-weight: 800;
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.34);
+  
 }
 
 .header-text h1 {
