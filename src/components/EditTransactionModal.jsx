@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 import { getTransactions, updateTransaction } from "../services/transactionService";
-import "./EditTransactionModal.css";
+import "../styles/EditTransactionModal.css";
 
 const expenseCategories = [
   "Food",

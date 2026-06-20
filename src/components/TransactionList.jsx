@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { toast } from "react-toastify";
 
 import { deleteTransaction, getTransactions } from "../services/transactionService";
-import "./TransactionList.css";
+import "../styles/TransactionList.css";
 
 function ActionIcon({ type }) {
   if (type === "edit") {

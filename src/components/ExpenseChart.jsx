@@ -6,7 +6,7 @@ import {
   Tooltip,
 } from "recharts";
 
-import "./ExpenseChart.css";
+import "../styles/ExpenseChart.css";
 
 const COLORS = [
   "#2563eb",
